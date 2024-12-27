@@ -1,6 +1,8 @@
 using System.Drawing.Printing;
 using Emgu.CV;
+using Emgu.CV.Ocl;
 using Emgu.CV.Structure;
+using Emgu.CV.XImgproc;
 
 namespace ExampleCam
 {
@@ -238,7 +240,7 @@ namespace ExampleCam
 
         private async void Recording()
         {
-            RecStatus.Text = "Recording: Yes";  
+            RecStatus.Text = "Recording: Yes";
             RecStatus.BackColor = Color.LimeGreen;
         }
 
@@ -262,6 +264,56 @@ namespace ExampleCam
         private void groupBoxControl_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void imageBoxFace_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonBrowser_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog diag = new FolderBrowserDialog();
+            if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                textBoxImageFolder.Text = diag.SelectedPath;
+            }
+            else
+            {
+                textBoxImageFolder.Text = "You didn't select any folder! ";
+            }
+
+        }
+
+        private void checkBoxSnap_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (checkBoxSnap.Checked)
+            {
+                checkBoxRecog.Enabled = false;
+            }
+            else
+            {
+                checkBoxRecog.Enabled = true;
+            }
+
+        }
+
+        private void checkBoxRecog_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxRecog.Checked)
+            {
+                checkBoxSnap.Enabled = false;
+            }
+            else
+            {
+                checkBoxSnap.Enabled = true;
+            }
         }
     }
 }
