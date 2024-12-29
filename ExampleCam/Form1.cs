@@ -3,6 +3,8 @@ using Emgu.CV;
 using Emgu.CV.Ocl;
 using Emgu.CV.Structure;
 using Emgu.CV.XImgproc;
+using System.IO;
+using Emgu.CV.Dai;
 
 namespace ExampleCam
 {
@@ -13,6 +15,15 @@ namespace ExampleCam
         private bool IsConnect = true;
         private bool IsRecord = true;
 
+        private System.Windows.Forms.Timer snapshortTimer = new System.Windows.Forms.Timer();
+
+        private string imageSaveFolder = "";
+        private bool isSnapshotActive = false;
+        private bool isRecording = false;
+
+
+
+
         CascadeClassifier _cascadeClassifier = new CascadeClassifier(@"C:\Users\nenea\Downloads\emgucv-master\emgucv-master\opencv\haarcascade_frontalface_default.xml");
 
         public Form1()
@@ -21,6 +32,9 @@ namespace ExampleCam
             buttonStart.Enabled = false;
             buttonFlipV.Enabled = false;
             buttonFlipH.Enabled = false;
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
+
+            snapshotTimer.Tick += SnapshotTimer_Tick;
 
         }
 
@@ -176,6 +190,7 @@ namespace ExampleCam
                 {
                     _capture.Start();
                 }
+                isRecording = true;
                 Recording();
                 buttonStart.Text = "Pause";
                 buttonConnect.Enabled = false;
@@ -186,7 +201,10 @@ namespace ExampleCam
                 {
                     _capture.Pause();
                 }
+                isRecording = false;
                 NoRecording();
+
+
                 buttonStart.Text = "Start";
                 buttonConnect.Enabled = true;
             }
@@ -282,6 +300,7 @@ namespace ExampleCam
             if (diag.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 textBoxImageFolder.Text = diag.SelectedPath;
+                imageSaveFolder = diag.SelectedPath;
             }
             else
             {
@@ -293,13 +312,49 @@ namespace ExampleCam
         private void checkBoxSnap_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (checkBoxSnap.Checked)
+            if (checkBoxSnap.Checked == true)
             {
-                checkBoxRecog.Enabled = false;
+                if (isSnapshotActive)
+                {
+                    MessageBox.Show("Snapshot is currently active. Please stop it before enabling/disabling.");
+                    checkBoxSnap.Checked = !checkBoxSnap.Checked;
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(imageSaveFolder))
+                {
+                    MessageBox.Show("Please select a folder to save images first!");
+                    checkBoxSnap.Checked = false;
+                    return;
+                }
+                try
+                {
+
+                    int interval = (int)numericUpDown1.Value * 1000;
+                    snapshortTimer.Interval = interval;
+
+                    if (interval == 0)
+                    {
+                        snapshortTimer.Stop();   
+                    }
+
+                    snapshortTimer.Start();
+                    isSnapshotActive = true;
+                    buttonConnect.Enabled = false;
+                }
+                catch (Exception ex)
+                {
+                    checkBoxSnap.Checked = false;
+                    MessageBox.Show("Inverval Should not be 0");
+                    
+                }
+
             }
             else
             {
-                checkBoxRecog.Enabled = true;
+                snapshortTimer.Stop();
+                isSnapshotActive = false;
+                buttonConnect.Enabled = true;
             }
 
         }
@@ -315,5 +370,68 @@ namespace ExampleCam
                 checkBoxSnap.Enabled = true;
             }
         }
+
+        private void SnapshotTimer_Tick(object sender, EventArgs e)
+        {
+            if (!isRecording || !checkBoxSnap.Checked || _capture == null || _capture.Ptr == IntPtr.Zero) return;
+
+            using (var imageFrame = _capture.QueryFrame().ToImage<Bgr, Byte>())
+            {
+                if (imageFrame != null)
+                {
+                    var grayFrame = imageFrame.Convert<Gray, byte>();
+                    var faces = _cascadeClassifier.DetectMultiScale(grayFrame, 1.1, 10);
+
+                    if (faces.Length > 0)
+                    {
+                        try
+                        {
+                            string timestamp = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                            string filePath = Path.Combine(imageSaveFolder, $"Snapshot_{timestamp}.png");
+
+                            Rectangle face_roi = new Rectangle(faces[0].X, faces[0].Y, faces[0].Width, faces[0].Height);
+                            grayFrame.ROI = face_roi;
+                            var faceImage = grayFrame.Copy();
+                            // Save Image
+                            faceImage.Save(filePath);
+
+                            textBoxLog.AppendText($"Snapshot saved to : {filePath}{Environment.NewLine}");
+                            textBoxLog.AppendText($"Timer Interval: {snapshortTimer.Interval} ms{Environment.NewLine}");
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show($"Error saving snapshot: {ex.Message}");
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            int interval = (int)numericUpDown1.Value * 1000;
+
+
+            if (interval == 0)
+            {
+                if (snapshortTimer.Enabled)
+                {
+                    MessageBox.Show("Interval cannot be 0. Please set a valid time interval.");
+                    checkBoxSnap.Checked = false;
+                    snapshortTimer.Stop();
+                }
+                return;
+            }
+
+            snapshortTimer.Interval = interval;
+
+            if (isSnapshotActive)
+            {
+                textBoxLog.AppendText($"Timer Interval updated: {snapshortTimer.Interval} ms{Environment.NewLine}");
+            }
+        }
+
     }
 }

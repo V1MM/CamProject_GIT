@@ -53,6 +53,7 @@
             checkBoxRecog = new CheckBox();
             groupBox2 = new GroupBox();
             textBoxLog = new TextBox();
+            snapshotTimer = new System.Windows.Forms.Timer(components);
             groupBoxView.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)imageBoxLive).BeginInit();
             ((System.ComponentModel.ISupportInitialize)imageBoxFace).BeginInit();
@@ -220,6 +221,7 @@
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(61, 27);
             numericUpDown1.TabIndex = 7;
+            numericUpDown1.ValueChanged += numericUpDown1_ValueChanged;
             // 
             // textBoxImageFolder
             // 
@@ -299,6 +301,10 @@
             textBoxLog.Size = new Size(534, 132);
             textBoxLog.TabIndex = 0;
             // 
+            // snapshotTimer
+            // 
+            snapshotTimer.Enabled = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -355,5 +361,6 @@
         private Label label1;
         private TextBox textBoxImageFolder;
         private NumericUpDown numericUpDown1;
+        private System.Windows.Forms.Timer snapshotTimer;
     }
 }
