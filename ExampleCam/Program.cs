@@ -1,3 +1,8 @@
+using Emgu.CV.CvEnum;
+using Emgu.CV.Face;
+using Emgu.CV.Util;
+using Emgu.CV;
+
 namespace ExampleCam
 {
     internal static class Program
@@ -13,5 +18,8 @@ namespace ExampleCam
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
+
     }
 }
+
+

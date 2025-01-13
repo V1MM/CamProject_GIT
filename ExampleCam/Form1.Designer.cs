@@ -67,26 +67,26 @@
             // groupBoxView
             // 
             groupBoxView.Controls.Add(imageBoxLive);
-            groupBoxView.Location = new Point(81, 31);
+            groupBoxView.Location = new Point(81, 28);
             groupBoxView.Name = "groupBoxView";
-            groupBoxView.Size = new Size(537, 402);
+            groupBoxView.Size = new Size(537, 362);
             groupBoxView.TabIndex = 0;
             groupBoxView.TabStop = false;
             groupBoxView.Text = "Live View";
             // 
             // imageBoxLive
             // 
-            imageBoxLive.Location = new Point(15, 26);
+            imageBoxLive.Location = new Point(15, 23);
             imageBoxLive.Name = "imageBoxLive";
-            imageBoxLive.Size = new Size(511, 358);
+            imageBoxLive.Size = new Size(572, 322);
             imageBoxLive.TabIndex = 2;
             imageBoxLive.TabStop = false;
             // 
             // imageBoxFace
             // 
-            imageBoxFace.Location = new Point(6, 23);
+            imageBoxFace.Location = new Point(6, 21);
             imageBoxFace.Name = "imageBoxFace";
-            imageBoxFace.Size = new Size(189, 181);
+            imageBoxFace.Size = new Size(189, 163);
             imageBoxFace.TabIndex = 2;
             imageBoxFace.TabStop = false;
             imageBoxFace.Click += imageBoxFace_Click;
@@ -97,9 +97,9 @@
             groupBoxControl.Controls.Add(buttonFlipV);
             groupBoxControl.Controls.Add(buttonStart);
             groupBoxControl.Controls.Add(buttonConnect);
-            groupBoxControl.Location = new Point(331, 439);
+            groupBoxControl.Location = new Point(331, 395);
             groupBoxControl.Name = "groupBoxControl";
-            groupBoxControl.Size = new Size(538, 142);
+            groupBoxControl.Size = new Size(538, 128);
             groupBoxControl.TabIndex = 1;
             groupBoxControl.TabStop = false;
             groupBoxControl.Text = "Control Panel";
@@ -107,9 +107,9 @@
             // 
             // buttonFlipH
             // 
-            buttonFlipH.Location = new Point(309, 38);
+            buttonFlipH.Location = new Point(309, 34);
             buttonFlipH.Name = "buttonFlipH";
-            buttonFlipH.Size = new Size(94, 83);
+            buttonFlipH.Size = new Size(94, 75);
             buttonFlipH.TabIndex = 5;
             buttonFlipH.Text = "Flip H";
             buttonFlipH.UseVisualStyleBackColor = true;
@@ -117,9 +117,9 @@
             // 
             // buttonFlipV
             // 
-            buttonFlipV.Location = new Point(418, 38);
+            buttonFlipV.Location = new Point(418, 34);
             buttonFlipV.Name = "buttonFlipV";
-            buttonFlipV.Size = new Size(94, 83);
+            buttonFlipV.Size = new Size(94, 75);
             buttonFlipV.TabIndex = 4;
             buttonFlipV.Text = "Flip V";
             buttonFlipV.UseVisualStyleBackColor = true;
@@ -127,9 +127,9 @@
             // 
             // buttonStart
             // 
-            buttonStart.Location = new Point(181, 38);
+            buttonStart.Location = new Point(181, 34);
             buttonStart.Name = "buttonStart";
-            buttonStart.Size = new Size(97, 83);
+            buttonStart.Size = new Size(97, 75);
             buttonStart.TabIndex = 2;
             buttonStart.Text = "Start";
             buttonStart.UseVisualStyleBackColor = true;
@@ -137,9 +137,9 @@
             // 
             // buttonConnect
             // 
-            buttonConnect.Location = new Point(68, 38);
+            buttonConnect.Location = new Point(68, 34);
             buttonConnect.Name = "buttonConnect";
-            buttonConnect.Size = new Size(98, 83);
+            buttonConnect.Size = new Size(98, 75);
             buttonConnect.TabIndex = 0;
             buttonConnect.Text = "Connect";
             buttonConnect.UseVisualStyleBackColor = true;
@@ -149,9 +149,9 @@
             // 
             CamStatus.AutoSize = true;
             CamStatus.BackColor = Color.RosyBrown;
-            CamStatus.Location = new Point(1050, 561);
+            CamStatus.Location = new Point(1050, 505);
             CamStatus.Name = "CamStatus";
-            CamStatus.Size = new Size(129, 20);
+            CamStatus.Size = new Size(130, 18);
             CamStatus.TabIndex = 2;
             CamStatus.Text = "Status: Disconnect";
             // 
@@ -159,9 +159,9 @@
             // 
             RecStatus.AutoSize = true;
             RecStatus.BackColor = Color.RosyBrown;
-            RecStatus.Location = new Point(1050, 583);
+            RecStatus.Location = new Point(1050, 525);
             RecStatus.Name = "RecStatus";
-            RecStatus.Size = new Size(104, 20);
+            RecStatus.Size = new Size(98, 18);
             RecStatus.TabIndex = 3;
             RecStatus.Text = "Recording: No";
             // 
@@ -173,27 +173,27 @@
             // statusLabelClock
             // 
             statusLabelClock.AutoSize = true;
-            statusLabelClock.Location = new Point(28, 561);
+            statusLabelClock.Location = new Point(28, 505);
             statusLabelClock.Name = "statusLabelClock";
-            statusLabelClock.Size = new Size(42, 20);
+            statusLabelClock.Size = new Size(40, 18);
             statusLabelClock.TabIndex = 4;
             statusLabelClock.Text = "Time";
             // 
             // statusLabelDate
             // 
             statusLabelDate.AutoSize = true;
-            statusLabelDate.Location = new Point(28, 583);
+            statusLabelDate.Location = new Point(28, 525);
             statusLabelDate.Name = "statusLabelDate";
-            statusLabelDate.Size = new Size(35, 20);
+            statusLabelDate.Size = new Size(33, 18);
             statusLabelDate.TabIndex = 5;
             statusLabelDate.Text = "Day";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(imageBoxFace);
-            groupBox1.Location = new Point(624, 31);
+            groupBox1.Location = new Point(624, 28);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(201, 213);
+            groupBox1.Size = new Size(201, 192);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Face";
@@ -207,9 +207,9 @@
             Recognizer.Controls.Add(label1);
             Recognizer.Controls.Add(checkBoxSnap);
             Recognizer.Controls.Add(checkBoxRecog);
-            Recognizer.Location = new Point(842, 31);
+            Recognizer.Location = new Point(842, 28);
             Recognizer.Name = "Recognizer";
-            Recognizer.Size = new Size(337, 213);
+            Recognizer.Size = new Size(337, 192);
             Recognizer.TabIndex = 7;
             Recognizer.TabStop = false;
             Recognizer.Text = "Recognizer";
@@ -217,7 +217,7 @@
             // 
             // numericUpDown1
             // 
-            numericUpDown1.Location = new Point(159, 55);
+            numericUpDown1.Location = new Point(159, 50);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(61, 27);
             numericUpDown1.TabIndex = 7;
@@ -225,16 +225,16 @@
             // 
             // textBoxImageFolder
             // 
-            textBoxImageFolder.Location = new Point(7, 123);
+            textBoxImageFolder.Location = new Point(7, 111);
             textBoxImageFolder.Name = "textBoxImageFolder";
             textBoxImageFolder.Size = new Size(314, 27);
             textBoxImageFolder.TabIndex = 6;
             // 
             // buttonBrowser
             // 
-            buttonBrowser.Location = new Point(227, 167);
+            buttonBrowser.Location = new Point(227, 150);
             buttonBrowser.Name = "buttonBrowser";
-            buttonBrowser.Size = new Size(94, 29);
+            buttonBrowser.Size = new Size(94, 26);
             buttonBrowser.TabIndex = 5;
             buttonBrowser.Text = "Browse";
             buttonBrowser.UseVisualStyleBackColor = true;
@@ -243,27 +243,27 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(7, 94);
+            label2.Location = new Point(7, 85);
             label2.Name = "label2";
-            label2.Size = new Size(170, 20);
+            label2.Size = new Size(160, 18);
             label2.TabIndex = 4;
             label2.Text = "Training Image(s) Folder";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(226, 58);
+            label1.Location = new Point(226, 52);
             label1.Name = "label1";
-            label1.Size = new Size(86, 20);
+            label1.Size = new Size(81, 18);
             label1.TabIndex = 3;
             label1.Text = "sec / image";
             // 
             // checkBoxSnap
             // 
             checkBoxSnap.AutoSize = true;
-            checkBoxSnap.Location = new Point(6, 56);
+            checkBoxSnap.Location = new Point(6, 50);
             checkBoxSnap.Name = "checkBoxSnap";
-            checkBoxSnap.Size = new Size(142, 24);
+            checkBoxSnap.Size = new Size(139, 22);
             checkBoxSnap.TabIndex = 1;
             checkBoxSnap.Text = "On/Off Snapshot";
             checkBoxSnap.UseVisualStyleBackColor = true;
@@ -272,9 +272,9 @@
             // checkBoxRecog
             // 
             checkBoxRecog.AutoSize = true;
-            checkBoxRecog.Location = new Point(6, 26);
+            checkBoxRecog.Location = new Point(6, 23);
             checkBoxRecog.Name = "checkBoxRecog";
-            checkBoxRecog.Size = new Size(155, 24);
+            checkBoxRecog.Size = new Size(150, 22);
             checkBoxRecog.TabIndex = 0;
             checkBoxRecog.Text = "On/Off Recognizer";
             checkBoxRecog.UseVisualStyleBackColor = true;
@@ -283,9 +283,9 @@
             // groupBox2
             // 
             groupBox2.Controls.Add(textBoxLog);
-            groupBox2.Location = new Point(630, 258);
+            groupBox2.Location = new Point(630, 232);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(549, 175);
+            groupBox2.Size = new Size(549, 158);
             groupBox2.TabIndex = 8;
             groupBox2.TabStop = false;
             groupBox2.Text = "Log";
@@ -293,23 +293,24 @@
             // textBoxLog
             // 
             textBoxLog.BorderStyle = BorderStyle.FixedSingle;
-            textBoxLog.Location = new Point(9, 25);
+            textBoxLog.Location = new Point(9, 22);
             textBoxLog.Multiline = true;
             textBoxLog.Name = "textBoxLog";
             textBoxLog.ReadOnly = true;
             textBoxLog.ScrollBars = ScrollBars.Both;
-            textBoxLog.Size = new Size(534, 132);
+            textBoxLog.Size = new Size(534, 119);
             textBoxLog.TabIndex = 0;
             // 
             // snapshotTimer
             // 
             snapshotTimer.Enabled = true;
+            snapshotTimer.Tick += snapshotTimer_Tick_1;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(8F, 18F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1191, 612);
+            ClientSize = new Size(1191, 551);
             Controls.Add(groupBox2);
             Controls.Add(Recognizer);
             Controls.Add(groupBox1);

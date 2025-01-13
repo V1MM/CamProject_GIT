@@ -21,9 +21,6 @@ namespace ExampleCam
         private bool isSnapshotActive = false;
         private bool isRecording = false;
 
-
-
-
         CascadeClassifier _cascadeClassifier = new CascadeClassifier(@"C:\Users\nenea\Downloads\emgucv-master\emgucv-master\opencv\haarcascade_frontalface_default.xml");
 
         public Form1()
@@ -335,7 +332,7 @@ namespace ExampleCam
 
                     if (interval == 0)
                     {
-                        snapshortTimer.Stop();   
+                        snapshortTimer.Stop();
                     }
 
                     snapshortTimer.Start();
@@ -346,12 +343,14 @@ namespace ExampleCam
                 {
                     checkBoxSnap.Checked = false;
                     MessageBox.Show("Inverval Should not be 0");
-                    
+
                 }
 
+                checkBoxRecog.Enabled = false;
             }
             else
             {
+                checkBoxRecog.Enabled = true;
                 snapshortTimer.Stop();
                 isSnapshotActive = false;
                 buttonConnect.Enabled = true;
@@ -433,5 +432,9 @@ namespace ExampleCam
             }
         }
 
+        private void snapshotTimer_Tick_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
