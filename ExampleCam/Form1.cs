@@ -187,9 +187,13 @@ namespace ExampleCam
                 {
                     _capture.Start();
                 }
+
                 isRecording = true;
                 Recording();
                 buttonStart.Text = "Pause";
+                checkBoxRecog.Enabled = false;
+                checkBoxSnap.Enabled = false;
+
                 buttonConnect.Enabled = false;
             }
             else
@@ -199,6 +203,8 @@ namespace ExampleCam
                     _capture.Pause();
                 }
                 isRecording = false;
+                checkBoxRecog.Enabled = true;
+                checkBoxSnap.Enabled = true;
                 NoRecording();
 
 
